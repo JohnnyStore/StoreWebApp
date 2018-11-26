@@ -1,0 +1,29 @@
+<link rel='stylesheet' href='/stylesheets/view/login.css' />
+<div class="main">
+  <div class="loginbg"></div>
+  <section class="login">
+    <article class="languanes">
+      <select name="switchLan" id="switch-lan">
+        <option value="cn">中文</option>
+        <option value="en">English</option>
+      </select>
+    </article>
+    <article class="logo">
+      <img src="images/account/logo.png" alt="" />
+    </article>
+    <article class="grupform">
+      <form>
+        <input type="text" id="form-filed-userName" placeholder="用户名/手机号" />
+        <input type="password" id="form-filed-password" placeholder="密码"/>
+        <button type="button" class="btn-login" id="btn-login">登录</button>
+      </form>
+      <p>
+        <a href="/register" id="link-register">新用户注册</a>
+        <a href="/forgetPassword" id="link-forgetpasword" class="fl">忘记密码？</a>
+      </p>
+    </article>
+    <footer>Copyright(c) LUVPET Corp.All Rights Reserved</footer>
+  </section>
+</div>
+<input type="hidden" value="{{target}}" id="hidden-target">
+<script type="text/javascript" src="/javascripts/view/login.js"></script>
