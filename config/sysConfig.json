@@ -1,0 +1,7 @@
+{
+  "pageSize": 10,
+  "paginationSize": 10,
+  "dogItemID": 1,
+  "catItemID": 2,
+  "dogAndCatItemID": 3
+}
