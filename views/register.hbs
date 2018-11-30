@@ -1,0 +1,46 @@
+<link rel='stylesheet' href='/stylesheets/view/register.css' />
+<div class="main">
+  <header>
+    <i class="iconfont icon-left-arrow"></i>
+    <p class="lan-cn">新用户注册</p>
+    <p class="lan-en hidden">New User Register</p>
+  </header>
+  <article class="groupreg">
+    <form>
+      <label>
+        <span class="lan-cn">客户类型</span>
+        <span class="lan-en hidden">Role</span>
+        <input type="radio" name="role" value="N" checked> <lable class="lan-cn">我的普通用户</lable> <lable class="lan-en">Normal</lable>
+        <input type="radio" name="role" value="W"> <lable class="lan-cn">我是批发商</lable> <lable class="lan-en">Wholesaler</lable>
+      </label>
+      <label>
+        <span class="lan-cn">手机号</span>
+        <span class="lan-en hidden">Email</span>
+        <input type="tel" class="lan-cn" maxlength="11" id="form-field-cellphone" placeholder="" />
+        <input type="email" class="lan-en hidden" id="form-field-email" placeholder="" />
+      </label>
+      <label>
+        <span class="lan-cn">验证码</span>
+        <span class="lan-en hidden">Code</span>
+        <input type="number" id="form-field-validCode"/>
+        <div class="verfcode">
+          <button type="button" class="lan-cn btn-valid">
+            <span class="lan lan-cn">获取验证码</span>
+            <span class="lan lan-en hidden">Valid Code</span>
+          </button>
+          <p class="hidden"><i id="seconds">60</i></p>
+        </div>
+      </label>
+      <label>
+        <span class="lan-cn">密码</span>
+        <span class="lan-en hidden">Password</span>
+        <input type="password" id="form-field-password" maxlength="6" placeholder="" />
+      </label>
+      <button type="button" class="btn-register">
+        <span class="lan-cn">注册</span>
+        <span class="lan-en hidden">Register</span>
+      </button>
+    </form>
+  </article>
+</div>
+<script type="text/javascript" src="/javascripts/view/register.js"></script>

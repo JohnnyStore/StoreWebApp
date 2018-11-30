@@ -51,6 +51,17 @@ function setDefaultLanguage() {
   }
 }
 
+function setPageLanguage() {
+  var lan = localStorage.getItem("siteLanguage");
+  if(lan === 'cn'){
+    $('.lan-en').addClass('hidden');
+    $('.lan-cn').removeClass('hidden');
+  }else{
+    $('.lan-cn').addClass('hidden');
+    $('.lan-en').removeClass('hidden');
+  }
+}
+
 function alertRequestError(reqUrl) {
   var lan = localStorage.getItem("siteLanguage");
   if(lan === 'cn'){
