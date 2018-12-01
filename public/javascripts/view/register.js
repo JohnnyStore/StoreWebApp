@@ -47,16 +47,19 @@ $(document).ready(function () {
         if(res.err){
           alertResponseError(res.code, res.msg);
           validCode = false;
+          return false;
         }
         if(!res.exist){
           lan === 'cn' ? errMsg = '验证码不正确。' : errMsg = 'The verification code is invalid.';
           layer.msg(errMsg);
           validCode = false;
+          return false;
         }
         if(res.expired){
           lan === 'cn' ? errMsg = '验证码已过期。' : errMsg = 'The verification code has expired.';
           layer.msg(errMsg);
           validCode = false;
+          return false;
         }
         validCode = true;
       },

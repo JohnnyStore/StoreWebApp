@@ -8,7 +8,7 @@ $(document).ready(function () {
     switch (lan){
       case 'cn':
         $('#switch-lan').find('option[value="cn"]').attr('selected',true);
-        $('#form-filed-userName').attr('placeholder', '用户名/手机号');
+        $('#form-filed-userName').attr('placeholder', '手机号');
         $('#form-filed-password').attr('placeholder', '密码');
         $('#btn-login').text('登录');
         $('#link-register').text('新用户注册');
