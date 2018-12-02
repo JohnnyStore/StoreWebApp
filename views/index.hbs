@@ -1,2 +1,132 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/index.css' />
+
+<div class="main">
+  <article class="index_search">
+    <span>爱宠族</span>
+    <p>
+      <input type="search" />
+      <i class="iconfont icon-search"></i>
+    </p>
+    <i class="iconfont icon-gouwuche1"></i>
+  </article>
+  <article>
+    <img src="../images/banner/banner.jpg" width="100%" height="100%" alt="" />
+  </article>
+
+  <!--每日疯抢-->
+  <section class="dailyRushed">
+    <article class="dailytilte">
+      <i class="iconfont icon-shijian"></i>
+      <h2 class="lan-cn">每日疯抢</h2>
+      <h2 class="lan-en">Daily Sale</h2>
+    </article>
+    <div class="swiper-container">
+      <div class="swiper-wrapper daily-sale">
+      </div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="pagination"></div>
+    </div>
+  </section>
+
+  <!--推荐品牌-->
+  <section class="dailyRushed">
+    <article class="index_title">
+      <h2>推荐品牌 <span>货好不贵的良心品牌</span></h2>
+    </article>
+    <article class="brandlist">
+      <ul>
+      </ul>
+      <h2>
+        <a href="itemList?brandID=all">
+          全部<br>品牌
+          <i class="iconfont icon-right"></i>
+        </a>
+      </h2>
+    </article>
+  </section>
+
+  <!--当季热销-->
+  <section class="dailyRushed">
+    <article class="index_title">
+      <h2>当季热销 <span>爱宠族当季时尚新定义</span></h2>
+    </article>
+    <div class="swiper-container2">
+      <div class="swiper-wrapper hot-sale">
+      </div>
+      <!-- Add Arrows -->
+      <div class="next"></div>
+      <div class="prev"></div>
+      <div class="pagination"></div>
+    </div>
+  </section>
+
+  <!--狗类促销商品-->
+  <article>
+    <img src="images/index/dog.jpg" width="100%" height="100%" alt="" />
+  </article>
+  <section class="dogsitems dog-promotion clearfix">
+    <article class="dogs_class_two clearfix">
+      <div class="dogs_25">
+        <ul>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!--猫类促销商品-->
+  <article>
+    <img src="images/index/cat.jpg" width="100%" height="100%" alt="" />
+  </article>
+  <section class="dogsitems cat-promotion clearfix">
+    <article class="dogs_class_two clearfix">
+      <div class="dogs_25">
+        <ul>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <div class="logotext">
+    —品质养宠 • 尽在爱宠族—
+  </div>
+
+  <footer>
+    <ul>
+      <li>
+        <a href="/">
+          <i class="iconfont icon-shouye1"></i>
+          <p class="lan-cn">首页</p>
+          <p class="lan-en">Index</p>
+        </a>
+      </li>
+      <li>
+        <a href="goodslist.html">
+          <i class="iconfont icon-fenlei"></i>
+          <p class="lan-cn">分类</p>
+          <p class="lan-en">Category</p>
+        </a>
+      </li>
+      <li>
+        <a href="shoppingCart.html">
+          <i class="iconfont icon-gouwuche3"></i>
+          <p class="lan-cn">购物车</p>
+          <p class="lan-en">Shopping Cart</p>
+        </a>
+      </li>
+      <li>
+        <a href="allorder.html">
+          <i class="iconfont icon-wode"></i>
+          <p class="lan-cn">我的</p>
+          <p class="lan-en">Mine</p>
+        </a>
+      </li>
+    </ul>
+  </footer>
+</div>
+
+<script type="text/javascript" src="/javascripts/idangerous.swiper.min.js" ></script>
+<script type="text/javascript" src="/javascripts/view/index.js"></script>
