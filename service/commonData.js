@@ -24,15 +24,4 @@ exports.getCommonData = function (req, res, callback) {
       });
     }
   });
-
-  // var lan = req.cookies['lan'];
-  // if(lan === undefined){
-  //   res.cookie("lan", 'en', {maxAge: 60000});
-  //   lan = 'en'
-  // }
-  // lan === 'cn' ? navData.index.title = '主页' : 'HOME';
-  // lan === 'cn' ? navData.brand.title = '品牌商品' : 'BRANDS';
-  // lan === 'cn' ? navData.pet.title = '宠物商品' : 'PETS';
-  // lan === 'cn' ? navData.news.title = '新闻动态' : 'NEWS';
-  // lan === 'cn' ? navData.introduction.title = '企业简介' : 'INTRODUCTION';
 };

@@ -299,5 +299,12 @@ $(document).ready(function () {
     });
   }
 
+  $('.search-content').keydown(function (e) {
+
+    let content = $.trim($('.search-content').val());
+    if(e.keyCode === 13 && content !== 0){
+      location.href = '/items?itemDes=' + content;
+    }
+  });
   initPage();
 });

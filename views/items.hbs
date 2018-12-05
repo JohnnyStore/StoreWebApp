@@ -1,0 +1,30 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/index.css' />
+<link rel='stylesheet' href='/stylesheets/view/itemCategory.css' />
+
+<div class="main">
+  <article class="index_search goodslist_search">
+    <!--<a href="#" class="goodslist_arrow">-->
+      <!--<i class="iconfont icon-left-arrow"></i>-->
+    <!--</a>-->
+    <p>
+      <input type="search" class="search-content" />
+      <i class="iconfont icon-search"></i>
+    </p>
+    <a href="#" class="goodslist_text btn-search">搜索</a>
+  </article>
+
+  <section class="goods_list_items" id="app">
+    <ul>
+    </ul>
+  </section>
+</div>
+<input type="hidden" value="{{brandID}}" id="hidden-brandID">
+<input type="hidden" value="{{categoryID}}" id="hidden-categoryID">
+<input type="hidden" value="{{subCategoryID}}" id="hidden-subCategoryID">
+<input type="hidden" value="{{itemDes}}" id="hidden-itemDes">
+
+<script type="text/javascript" src="https://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js" ></script>
+<script type="text/javascript" src="/javascripts/PullToRefresh.min.js"></script>
+<script type="text/javascript" src="/javascripts/view/items.js"></script>
