@@ -7,6 +7,7 @@ let logger = require('morgan');
 let indexRouter = require('./routes/index');
 let itemCategoryRouter = require('./routes/itemCategory');
 let itemsRouter = require('./routes/items');
+let common = require('./routes/common');
 let itemRouter = require('./routes/item');
 let shoppingCartRouter = require('./routes/shoppingCart');
 let orderRouter = require('./routes/order');
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/index', indexRouter);
+app.use('/common', common);
 app.use('/itemCategory', itemCategoryRouter);
 app.use('/items', itemsRouter);
 app.use('/item', itemRouter);

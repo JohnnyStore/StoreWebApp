@@ -1,0 +1,65 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/view/addShippingAddress.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/lc_switch.css' />
+
+<div class="main">
+  <header>
+    <a href="javascript :;" class="goodslist_arrow" onClick="javascript :history.back(-1);"><i class="iconfont icon-left-arrow"></i></a>
+    <nav class="goods clearfix">
+      <ul>
+        <li>添加收货地址</li>
+      </ul>
+    </nav>
+    <a href="javascript:;" class="save" id="btn-save">保存</a>
+  </header>
+  <section class="container">
+    <section class="add_address_groups">
+      <form action="" method="">
+        <section class="g-flexview">
+          <label>
+            <select id="shipping-country">
+            </select>
+          </label>
+          <label>
+            <select id="shipping-province">
+            </select>
+          </label>
+          <label>
+            <select id="shipping-city">
+            </select>
+          </label>
+          <label>
+            <input type="text" id="shipping-address"  placeholder="详细地址"/>
+          </label>
+          <label>
+            <input type="text" id="addressee"  placeholder="收件人"/>
+          </label>
+          <label>
+            <input type="text" id="cellphone"  placeholder="联系电话"/>
+          </label>
+          <div class="choose_address">
+            <p class="dis">设为默认地址</p>
+            <p class="switch">
+              <input type="checkbox" name="check-1" value="4" id="isDefault" class="lcs_check" autocomplete="off" />
+            </p>
+          </div>
+        </section>
+      </form>
+    </section>
+  </section>
+
+</div>
+
+<div class="option hidden">
+  <a href="javascript:;" class="option-delete" id="btn-delete">
+    <span class="lan-cn">删除收货地址</span>
+    <span class="lan-en hidden">Delete Shipping Address</span>
+  </a>
+</div>
+
+<input type="hidden" value="{{option}}" id="hidden-option">
+<input type="hidden" value="{{shippingID}}" id="hidden-shippingID">
+
+<script type="text/javascript" src="/javascripts/lc_switch.min.js"></script>
+<script type="text/javascript" src="/javascripts/view/addShippingAddress.js"></script>

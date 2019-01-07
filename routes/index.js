@@ -21,7 +21,7 @@ router.get('/dailySale', function(req, res, next) {
         err: !result.content.result,
         code: result.content.responseCode,
         msg: result.content.responseMessage,
-        dailySale: result.content.responseData.dailySnapUpOfToday
+        dailySale: result.content.responseData !== null ? result.content.responseData.dailySnapUpOfToday : null
       });
     }
   });

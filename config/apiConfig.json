@@ -1,6 +1,6 @@
 {
   "StoreService": {
-    "host": "23.98.40.101",
+    "host": "localhost",
     "port": 8080,
     "path": {
       "brand": "/api/brand",
@@ -47,6 +47,7 @@
       "shoppingCart4Customer":"/api/shoppingCart/customer",
       "shoppingCartCondition":"/api/shoppingCart/condition",
       "collection":"/api/collection",
+      "collection4Item":"/api/collection/item",
       "brandHot":"/api/brandHot",
       "customer": "/api/customer",
       "forgetPassword": "/api/customer/forgetPassword",
@@ -60,6 +61,7 @@
       "orderHistory":"/api/order/history",
       "shippingAddress4Customer":"/api/shippingAddress/customer",
       "shippingAddress":"/api/shippingAddress",
+      "changeShippingAddress":"/api/shippingAddress/change",
       "changeExpressInfo":"/api/order/changeExpressInfo",
       "changeOrderStatus":"/api/order/changeStatus",
       "navigate":"/api/navigate",

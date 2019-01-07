@@ -1,0 +1,387 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/item.css' />
+<link rel="stylesheet" href="/stylesheets/view/idangerous.swiper.css">
+
+<header>
+  <a href="#" class="goodslist_arrow"><i class="iconfont icon-left-arrow"></i></a>
+  <div class="find_nav">
+    <div class="find_nav_left">
+      <div class="find_nav_list clearfix" id="pagenavi1">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="lan-cn">商品</span>
+              <span class="lan-en hidden">Commodity</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="lan-cn">详情</span>
+              <span class="lan-en hidden">Detail</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="lan-cn">评价</span>
+              <span class="lan-en hidden">Review</span>
+            </a>
+          </li>
+          <li class="sideline"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<section>
+  <input type="hidden" value="{{itemDetail.brandID}}" id="hidden-brandID">
+  <input type="hidden" value="{{itemDetail.categoryID}}" id="hidden-categoryID">
+  <input type="hidden" value="{{itemDetail.subCategoryID}}" id="hidden-subCategoryID">
+  <input type="hidden" value="{{itemDetail.itemGroupID}}" id="hidden-itemGroupID">
+  <input type="hidden" value="{{itemDetail.itemID}}" id="hidden-itemID">
+  <input type="hidden" value="{{itemDetail.seriesID}}" id="hidden-seriesID">
+  <input type="hidden" value="{{itemDetail.colorID}}" id="hidden-colorID">
+  <input type="hidden" value="{{itemDetail.sizeID}}" id="hidden-sizeID">
+  <input type="hidden" value="{{shippingID}}" id="hidden-shippingID">
+  <div id="slider1" class="swipe">
+    <ul class="box01_list">
+      <li>
+        <div class="main">
+          <section class="items-title">
+            <article class="items-goods-img">
+              <div class="device">
+                <a class="arrow-left" href="#"></a>
+                <a class="arrow-right" href="#"></a>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                  </div>
+                </div>
+                <div class="pagination"></div>
+              </div>
+            </article>
+            <article class="items-title-text">
+              <h1 class="lan-cn" id="title-cn">{{itemDetail.brandCN}} {{itemDetail.itemShortDescriptionCN}} {{itemDetail.colorCN}} {{itemDetail.sizeCN}}</h1>
+              <h1 class="lan-en hidden" id="title-en">{{itemDetail.brandEN}} {{itemDetail.itemShortDescriptionEN}} {{itemDetail.colorEN}} {{itemDetail.sizeEN}}</h1>
+            </article>
+            <article class="items-title-price">
+              {{#if itemDetail.hasDiscount}}
+                <em class="lan-cn">¥{{itemDetail.salesPrice4RMB}}</em>
+                <em class="original lan-cn">￥{{itemDetail.unitPrice4RMB}}</em>
+                <em class="lan-en hidden">${{itemDetail.salesPrice4USD}}</em>
+                <em class="original lan-en hidden">${{itemDetail.unitPrice4USD}}</em>
+              {{else}}
+                <em class="lan-cn">¥{{itemDetail.salesPrice4RMB}}</em>
+                <em class="original lan-en hidden">${{itemDetail.unitPrice4USD}}</em>
+              {{/if}}
+            </article>
+          </section>
+          <section class="choose_color">
+            <ul>
+              <li>
+                <span class="lan-cn">已选</span>
+                <span class="lan-en hidden">Choose</span>
+                <em class="choose-memo"></em>
+                <em class="amount"></em>
+                <em class="lan-cn">件</em>
+                <em class="lan-en hidden">pieces</em>
+                <i class="iconfont icon-sandian1 clickwn"></i>
+              </li>
+            </ul>
+          </section>
+          <!--<section class="choose_color choose-shipping-address">-->
+            <!--<ul>-->
+              <!--<li>-->
+                <!--<a href="javascript:;">-->
+                  <!--<span class="lan-cn">送至</span>-->
+                  <!--<span class="lan-en hidden">Shipping</span>-->
+                  <!--<span class="shipping-address"></span>-->
+                  <!--<i class="iconfont icon-right"></i>-->
+                <!--</a>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</section>-->
+          <section class="items-product-evaluation item-review-list-all">
+            <figure>
+              <h1>
+                <span class="lan-cn">商品评价</span>
+                <span class="lan-en hidden">Customer Review</span>
+                <em class="item-review-count"></em></h1>
+                <a href="#">
+                  <span class="lan-cn">好评</span>
+                  <span class="lan-en hidden">Favourable</span>
+                  <em class="item-review-good-percent"></em>% <i class="iconfont icon-right"></i>
+                </a>
+            </figure>
+            <article class="evaluation-list clearfix">
+              <ul class=""></ul>
+            </article>
+
+          </section>
+          <div class="main">
+            <section class="items_goods_foot">
+              <ul>
+                <li style="">
+                  <a href="#" id="btn-Collection">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <p class="lan-cn" style="padding-left: 3px; padding-top: 2px">收藏</p>
+                    <p class="lan-en hidden" style="padding-left: 3px; padding-top: 2px">Collection</p>
+                  </a>
+                </li>
+                <!--<li>-->
+                  <!--<a href="#">-->
+                    <!--<i class="iconfont icon-shopcart"></i>-->
+                    <!--<p>购物车</p>-->
+                  <!--</a>-->
+                <!--</li>-->
+              </ul>
+              <div class="items-goods-apply">
+                <a href="javascript:;" id="btn-addToCart">
+                  <i class="iconfont icon-shopcart"></i>
+                  <span class="lan-cn">加入购物车</span>
+                  <span class="lan-en hidden">Add to List</span>
+                </a>
+              </div>
+            </section>
+          </div>
+          <!-- 弹出 -->
+          <div class="flick-menu-mask" style=""></div>
+          <div class="spec-menu">
+            <div class="spec-menu-content spec-menu-show" style="display: block;">
+              <div class="spec-menu-top bdr-b">
+                <div class="spec-first-pic"> <img id="spec_image" src="" /> </div>
+                <div class="spec-price items-title-price">
+                  {{#if itemDetail.hasDiscount}}
+                    <em class="lan-cn">¥{{itemDetail.salesPrice4RMB}}</em>
+                    <em class="original lan-cn">￥{{itemDetail.unitPrice4RMB}}</em>
+                    <em class="lan-en hidden">${{itemDetail.salesPrice4USD}}</em>
+                    <em class="original lan-en hidden">${{itemDetail.unitPrice4USD}}</em>
+                  {{else}}
+                    <em class="lan-cn">¥{{itemDetail.salesPrice4RMB}}</em>
+                    <em class="original lan-en hidden">${{itemDetail.unitPrice4USD}}</em>
+                  {{/if}}
+                  <p class="lan-cn">商品编号：{{itemDetail.itemID}}</p>
+                  <p class="lan-en hidden">Item#：{{itemDetail.itemID}}</p>
+                </div>
+                <a class="tclck">
+                  <i class="iconfont icon-close"></i>
+                </a>
+              </div>
+              <div class="spec-menu-middle">
+                <div class="prod-spec" id="prodSpecArea">
+                  <!-- 已选 -->
+                  <div class="spec-desc">
+                    <span class="lan-cn part-note-msg">已选</span>
+                    <span class="lan-en hidden part-note-msg">Choose</span>
+                    <div id="specDetailInfo_spec" class="base-txt">
+                      <span class="memo"></span>
+                      <span class="amount">1</span>
+                      <span class="lan-cn">件</span>
+                      <span class="lan-en hidden">pieces</span>
+                    </div>
+                  </div>
+                  <div class="nature-container clearfix" id="natureCotainer">
+                    <!--颜色 5.5版本之前的规格属性-->
+                    <div class="pro-color item-serise">
+                      <div class="part-note-msg">
+                        <span class="lan-cn">系列</span>
+                        <span class="lan-en hidden">Series</span>
+                      </div>
+                      <div id="color" class="item-serise-list">
+                      </div>
+                    </div>
+
+                    <div class="pro-color item-color">
+                      <div class="part-note-msg">
+                        <span class="lan-cn">颜色</span>
+                        <span class="lan-en hidden">Color</span>
+                      </div>
+                      <div class="item-color-list"></div>
+                    </div>
+
+                    <div class="pro-color item-size clearfix">
+                      <div class="part-note-msg">
+                        <span class="lan-cn">尺码</span>
+                        <span class="lan-en hidden">Size</span>
+                      </div>
+                      <div class="item-size-list"></div>
+                    </div>
+                  </div>
+                  <div id="addCartNum" class="pro-count">
+                    <span class="part-note-msg">数量</span>
+                    <div class="num">
+                      <p class="jian"><i class="iconfont icon-jiajian-"></i></p>
+                      <input id="cool" class="inputBorder" value="1" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" type="text" maxlength="5" placeholder="数量" />
+                      <p class="jia"><i class="iconfont icon-weibiaoti37"></i></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="flick-menu-btn">-->
+                <!--<a href="#">立即购买</a>-->
+                <!--<a href="#">加入购物车</a>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="main">
+          <section class="choose_color" style="margin-top: 0;">
+            <ul>
+              <li>
+                <span class="lan-cn">商品详情</span>
+                <span class="lan-en hidden">Item Detail</span>
+              </li>
+            </ul>
+          </section>
+          <section class="goodsdetails">
+            <h1 class="lan-cn">品牌: {{itemDetail.brandCN}}</h1>
+            <h1 class="lan-en hidden">Brand: {{itemDetail.brandEN}}</h1>
+            <table border="1" cellspacing="0">
+              <tr>
+                <td>
+                  <em class="lan-cn">商品编号</em>
+                  <em class="lan-en hidden">Item ID</em>
+                </td>
+                <td>{{itemDetail.itemID}}</td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品名称</em>
+                  <em class="lan-en hidden">Item Name</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.itemShortDescriptionCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.itemShortDescriptionCN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">适用范围</em>
+                  <em class="lan-en hidden">Scope</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.suitablePetCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.suitablePetEN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品分类</em>
+                  <em class="lan-en hidden">Type</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.categoryCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.categoryEN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品颜色</em>
+                  <em class="lan-en hidden">Color</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.colorCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.colorEN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品尺寸</em>
+                  <em class="lan-en hidden">Size</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.sizeCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.sizeEN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品制造地</em>
+                  <em class="lan-en hidden">Made in</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.madeInCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.madeInEN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品材质</em>
+                  <em class="lan-en hidden">Material</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.itemMaterialNameCN}}</p>
+                  <p class="lan-en hidden">{{itemDetail.itemMaterialNameEN}}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em class="lan-cn">商品规格</em>
+                  <em class="lan-en hidden">Specification</em>
+                </td>
+                <td>
+                  <p class="lan-cn">{{itemDetail.itemLength}}</p>
+                  <p class="lan-en hidden">{{itemDetail.itemLength}}</p>
+                </td>
+              </tr>
+            </table>
+            <p class="lan-cn item-des">{{itemDetail.itemDescriptionCN}}</p>
+            <p class="lan-en item-des hidden">{{itemDetail.itemDescriptionEN}}</p>
+            <p class="image-detail"></p>
+          </section>
+
+        </div>
+      </li>
+      <li>
+        <div class="main">
+          <section class="items-product-evaluation evalutaion-title-fixed">
+            <figure>
+              <h1>
+                <span class="lan-cn">商品评价</span>
+                <span class="lan-en hidden">Customer Review</span>
+              </h1>
+              <a href="#">
+                <span class="lan-cn">好评</span>
+                <span class="lan-en hidden">Good</span>
+                <em class="item-review-good-percent"></em>%
+              </a>
+
+              <!--<a href="#">好评度 <em>100%</em></a>-->
+            </figure>
+            <article class="pro_eval_type clearfix" id="evalution">
+              <a href="#" id="btn-review-all" class="selected">
+                <span class="lan-cn">全部</span>
+                <span class="lan-en hidden">All</span>
+                <em class="item-review-count">1798</em>
+              </a>
+              <a href="#" id="btn-review-good">
+                <span class="lan-cn">好评</span>
+                <span class="lan-en hidden">Good</span>
+                <em id="goodReviewCount">10 </em>
+              </a>
+              <a href="#" id="btn-review-middle">
+                <span class="lan-cn">中评</span>
+                <span class="lan-en hidden">Middle</span>
+                <em id="middleReviewCount">10 </em>
+              </a>
+              <a href="#" id="btn-review-negative">
+                <span class="lan-cn">差评</span>
+                <span class="lan-en hidden">Negative</span>
+                <em id="negativeReviewCount">10 </em>
+              </a>
+            </article>
+          </section>
+
+          <article class="evaluation-list product-eval-relative clearfix">
+            <ul>
+            </ul>
+          </article>
+        </div>
+      </li>
+    </ul>
+</section>
+
+<script type="text/javascript" src="/javascripts/view/item.js"></script>
+<script type="text/javascript" src="/javascripts/touchslider.js"></script>
+<script type="text/javascript" src="/javascripts/idangerous.swiper.min.js"></script>

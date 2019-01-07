@@ -91,6 +91,7 @@ router.get('/validCode', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var service = new commonService.commonInvoke('customer');
   var data = {
+    account: req.body.cellphone,
     password: req.body.password,
     customerType: req.body.customerType,
     cellphone:  req.body.cellphone,

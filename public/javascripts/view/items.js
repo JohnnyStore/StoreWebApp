@@ -140,31 +140,6 @@ $(document).ready(function () {
     });
   }
 
-  // function appendTestData(){
-  //   return "<li>" +
-  //       "<div class='goodslist_img'>" +
-  //       "<img src='images/goods.jpg' alt=''/>" +
-  //       "</div>" +
-  //       "<div class='goods_text'>" +
-  //       "<p>" +
-  //       "<a href='#'>爱宠族 LUVPET 巴宝莉格子系列之米色狗用背带 巴宝莉格子米色 …</a>" +
-  //       "</p>" +
-  //       "<h6>" +
-  //       "<a href='#'>￥12.6</a>" +
-  //       "<span>39.00</span>" +
-  //       "</h6>" +
-  //       "<div class='addshoping'>" +
-  //       "<i class='iconfont icon-gouwuche1'></i>" +
-  //       "</div>" +
-  //       "</div>" +
-  //       "</li>"
-  // }
-
-  function addhtml(type){
-    //$("#app ul")[type](appendTestData()+appendTestData()+appendTestData()+appendTestData())
-    layer.msg('aaa');
-  }
-
   $('.btn-search').click(function () {
     let content = $.trim($('.search-content').val());
     if(content.length === 0){
