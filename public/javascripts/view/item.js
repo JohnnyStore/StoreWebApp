@@ -4,6 +4,7 @@ $(document).ready(function () {
   let flb_w = $(".find_nav_left").width();
   let loginCustomer = getLoginCustomer();
   let lan = localStorage.getItem('siteLanguage');
+  let buyCount = 1;
   let currentBrandId = '';
   let currentCategoryId = '';
   let currentSubCategoryId = '';
@@ -484,7 +485,6 @@ $(document).ready(function () {
 
   function setCollection() {
     let itemID = $('#hidden-itemID').val();
-    let loginCustomer = getLoginCustomer();
     if(loginCustomer === null || loginCustomer.length === 0){
       return false;
     }
@@ -596,7 +596,7 @@ $(document).ready(function () {
 
   $('#btn-addToCart').click(function () {
     var itemID = $('#hidden-itemID').val();
-    var shoppingCount = 1;
+    var shoppingCount = buyCount;
 
     if(loginCustomer === null){
       layer.msg(lan === 'cn'? '请先登陆' : 'Please login first.');
@@ -617,7 +617,7 @@ $(document).ready(function () {
         if(res.err){
           alertResponseError(res.code, res.msg);
         }else{
-          layer.msg('添加购物车成功！');
+          location.href = '/shoppingCart';
         }
       },
       error: function(XMLHttpRequest, textStatus){
@@ -767,7 +767,7 @@ $(document).ready(function () {
     var $parent = $(this).parent(".num");
     var $num = window.Number($(".inputBorder", $parent).val());
     $(".inputBorder", $parent).val($num + 1);
-
+    buyCount = $num + 1;
     $('.amount').html($num + 1)
 
   });
@@ -776,14 +776,14 @@ $(document).ready(function () {
   $(".jian").click(function() {
     var $parent = $(this).parent(".num");
     var $num = window.Number($(".inputBorder", $parent).val());
-    if($num > 2) {
+    if($num >= 2) {
       $(".inputBorder", $parent).val($num - 1);
-      $('.amount').html($num - 1)
-
+      $('.amount').html($num - 1);
+      buyCount = $num - 1;
     } else {
       $(".inputBorder", $parent).val(1);
-      $('.amount').html($num)
-
+      $('.amount').html($num);
+      buyCount = $num;
     }
   });
 

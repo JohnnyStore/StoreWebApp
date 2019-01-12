@@ -1,0 +1,115 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/shoppingCart.css' />
+
+<div class="main">
+  <header>
+    <a href="javascript:history.back(-1)" class="goodslist_arrow"><i class="iconfont icon-left-arrow"></i></a>
+    <nav class="goods clearfix">
+      <ul>
+        <li>
+          <span class="lan-cn">购物车</span>
+          <span class="lan-en hidden">ShoppingCart</span>
+        </li>
+      </ul>
+    </nav>
+    <a class="rig_shai" id="rem_s" href="#">
+      <span class="lan-cn">编辑</span>
+      <span class="lan-en hidden">Edit</span>
+    </a>
+  </header>
+  <section class="container">
+    <form method="post" name="cart_form" target="_self" id="cart_form" action="">
+      <!--list-->
+      <div class="commodity_list_box">
+        <!--商品列表-->
+        <div class="commodity_box">
+          <div class="commodity_list">
+            <!--商品-->
+            <ul class="commodity_list_term">
+            {{#each shoppingCartList}}
+              <li class="select" data-shoppingCart-id="{{this.shoppingCartID}}" data-item-id="{{this.itemID}}">
+                <em aem="0" data-shoppingCart-id="{{this.shoppingCartID}}" data-item-id="{{this.itemID}}"></em>
+                <img src="{{this.itemVO.itemImageUrl}}" />
+                <div class="div_center">
+                  <h4 class="lan-cn">{{this.itemVO.brandCN}} {{this.itemVO.itemShortDescriptionCN}}</h4>
+                  <h4 class="lan-en hidden">{{this.itemVO.brandEN}} {{this.itemVO.itemShortDescriptionEN}}</h4>
+                  <span class="lan-cn">颜色：{{this.itemVO.colorCN}}</span>
+                  <span class="lan-en hidden">Color：{{this.itemVO.colorEN}}</span>
+                  <span class="lan-cn">尺码：{{this.itemVO.sizeCN}}</span>
+                  <span class="lan-en hidden">Size: {{this.itemVO.sizeEN}}</span>
+
+                  {{#if this.itemVO.hasDiscount}}
+                    <p class="now_value lan-cn">
+                      <i>￥</i>
+                      <b class="qu_su">{{this.itemVO.salesPrice4RMB}}</b>
+                      <i>￥</i>
+                      <span>{{this.itemVO.unitPrice4RMB}}</span>
+                    </p>
+                    <p class="now_value lan-en hidden">
+                      <i>$</i>
+                      <b class="qu_su">{{this.itemVO.salesPrice4USD}}</b>
+                      <i>$</i>
+                      <span>{{this.itemVO.unitPrice4USD}}</span>
+                    </p>
+                  {{else}}
+                    <p class="now_value lan-cn">
+                      <i>￥</i>
+                      <b class="qu_su">{{this.itemVO.salesPrice4RMB}}</b>
+                    </p>
+                    <p class="now_value lan-en hidden">
+                      <i>$</i>
+                      <b class="qu_su">{{this.itemVO.salesPrice4USD}}</b>
+                    </p>
+                  {{/if}}
+                </div>
+                <div class="div_right">
+                  <i class="reducew">-</i>
+                  <span class="zi">{{this.shoppingCount}}</span>
+                  <input type="hidden" value="84">
+                  <i class="plusw">+</i>
+                </div>
+              </li>
+            {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- end -->
+      <!-- footer -->
+      <div style="height:55px;"></div>
+      <div class="settle_box">
+        <dl class="all_check select">
+          <dt>
+            <span id="all_pitch_on"></span>
+            <em class="lan-cn">全选</em>
+            <em class="lan-en hidden">All</em>
+          </dt>
+        </dl>
+        <dl class="total_amount">
+          <dt>
+            <span class="lan-cn">合计：</span>
+            <span class="lan-en hidden">Total:</span>
+            <p id="total_price">
+              <span>¥</span>
+              <b>0</b>
+            </p>
+          </dt>
+        </dl>
+        <input type="hidden" name="gcs" id="gcs" />
+        <a class="settle_btn" id="confirm_cart">
+          <span class="lan-cn">结算</span>
+          <span class="lan-en hidden">Check</span>
+        </a>
+        <a class="settle_btn" href="javascript:void(0);" id="confirm_cart1">
+          <span class="lan-cn">删除</span>
+          <span class="lan-en hidden">Delete</span>
+        </a>
+      </div>
+      <!-- end -->
+    </form>
+
+  </section>
+</div>
+
+<script type="text/javascript" src="/javascripts/view/shoppingCart.js"></script>

@@ -312,10 +312,10 @@ $(document).ready(function () {
   $('#btn-delete').click(function () {
     let confirmMsg = lan === 'cn'? '确认删除改地址？' : 'Do you confirm delete the address?';
     let okMsg = lan === 'cn'? '删除？' : 'Delete';
-    let cancelMsg = lan === 'cn'? '取消？' : 'Cancel';
+    let cancelMsg = lan === 'cn'? '取消' : 'Cancel';
     layer.confirm(confirmMsg, {
       btn: [okMsg,cancelMsg]
-    }, function(){
+    }, function(index){
       deleteData();
     }, function(){
     });
