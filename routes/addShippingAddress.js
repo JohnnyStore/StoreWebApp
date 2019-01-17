@@ -6,7 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('addShippingAddress', {
     title: '添加收获地址',
     option: req.query.option,
-    shippingID: req.query.shippingID });
+    shippingID: req.query.shippingID
+  });
 });
 
 router.get('/detail', function(req, res, next) {

@@ -1,0 +1,73 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/order.css' />
+
+<div class="main">
+  <header>
+    <a href="javascript:;" class="goodslist_arrow" id="btn-preUrl"><i class="iconfont icon-left-arrow"></i></a>
+    <nav class="goods clearfix">
+      <ul>
+        <li>
+          <span class="lan-cn">订单结算</span>
+          <span class="lan-en hidden">Settle Accounts</span>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section class="container">
+    <section class="order_address">
+
+      <a href="#" class="arrow_right"><i class="iconfont icon-right"></i></a>
+    </section>
+    <!--商品列表-->
+    <div class="commodity_box clearfix">
+      <div class="commodity_list">
+        <!--商品-->
+        <ul class="commodity_list_term">
+          {{#each shoppingCartList}}
+            <li class="select" data-shopping-id="{{this.shoppingCartID}}" data-item-id="{{this.itemID}}" data-item-amount-rmb="{{this.totalPrice4RMB}}" data-item-amount-usd="{{this.totalPrice4USD}}">
+              <img src="{{this.itemVO.itemImageUrl}}" />
+              <div class="div_center">
+                <h4 class="lan-cn">{{this.itemVO.brandCN}} {{this.itemVO.itemShortDescriptionCN}} {{this.itemVO.colorCN}} {{this.itemVO.sizeCN}}</h4>
+                <h4 class="lan-en hidden">{{this.itemVO.brandEN}} {{this.itemVO.itemShortDescriptionEN}} {{this.itemVO.colorEN}} {{this.itemVO.sizeEN}}</h4>
+                <p class="lan-cn now_value"><i>￥</i><b class="qu_su">{{this.itemVO.salesPrice4RMB}}</b></p>
+                <p class="lan-en now_value hidden"><i>$</i><b class="qu_su">{{this.itemVO.salesPrice4USD}}</b></p>
+              </div>
+              <div class="div_right">
+                X{{this.shoppingCount}}
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+        <!--优惠信息-->
+        <div class="shop_ul_bottom clearfix">
+          <p>
+            <span class="lan-cn">支付方式</span>
+            <span class="lan-en hidden">Payment</span>
+          </p>
+          <p>
+            <span class="lan-cn">在线支付</span>
+            <span class="lan-en hidden">Online</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <section class="LeaveMessage">
+      <textarea id="leave-message" name="" rows="5" cols="" placeholder=""></textarea>
+    </section>
+    <div style="height: 0.88rem;"></div>
+    <section class="items_goods_foot">
+      <p class="lan-cn">总额: <em>￥</em><em id="totalAmount4RMB">{{totalAmount4RMB}}</em></p>
+      <p class="lan-en hidden">Total: <em>$</em><em id="totalAmount4USD">{{totalAmount4USD}}</em></p>
+      <div class="items-goods-apply">
+        <a href="javascript:;" id="btn-submit">
+          <span class="lan-cn">提交订单</span>
+          <span class="lan-en hidden">Submit</span>
+        </a>
+      </div>
+    </section>
+
+  </section>
+</div>
+<input type="hidden" value="{{shippingID}}" id="hidden-shippingId">
+<script type="text/javascript" src="/javascripts/view/order.js"></script>

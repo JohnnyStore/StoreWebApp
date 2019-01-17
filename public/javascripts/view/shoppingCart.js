@@ -332,38 +332,57 @@ $(function() {
 
   $('#confirm_cart').click(function () {
     let errorCount = 0;
-    $.each($(".commodity_list_term .pitch_on"), function (index, obj) {
-      let shoppingCartID = $(obj).attr('data-shoppingCart-id');
-      let itemID = $(obj).attr('data-item-id');
-      let shoppingCount = $(obj).parent().find('span.zi').text();
-      $.ajax({
-        url: '/shoppingCart',
-        type: 'put',
-        dataType: 'json',
-        async:false,
-        data:{
-          shoppingCartID: shoppingCartID,
-          itemID: itemID,
-          customerID: loginCustomer.customerID,
-          shoppingCount: shoppingCount,
-          status: 'I',
-          loginUser: loginCustomer.account
-        },
-        success: function (res) {
-          if(res.err){
-            errorCount++;
-          }
-        },
-        error: function (XMLHttpRequest, textStatus) {
-          errorCount++;
+    $.ajax({
+      url: '/shoppingCart/resetStatus',
+      type: 'put',
+      dataType: 'json',
+      async:false,
+      data:{
+        customerID: loginCustomer.customerID,
+        loginUser: loginCustomer.account
+      },
+      success: function (res) {
+        if(res.err){
+          layer.msg(lan === 'cn' ? 'Service异常。' : 'Service failed.');
+          return false;
         }
-      });
+        $.each($(".commodity_list_term .pitch_on"), function (index, obj) {
+          let shoppingCartID = $(obj).attr('data-shoppingCart-id');
+          let itemID = $(obj).attr('data-item-id');
+          let shoppingCount = $(obj).parent().find('span.zi').text();
+          $.ajax({
+            url: '/shoppingCart',
+            type: 'put',
+            dataType: 'json',
+            async:false,
+            data:{
+              shoppingCartID: shoppingCartID,
+              itemID: itemID,
+              customerID: loginCustomer.customerID,
+              shoppingCount: shoppingCount,
+              status: 'C',
+              loginUser: loginCustomer.account
+            },
+            success: function (res) {
+              if(res.err){
+                errorCount++;
+              }
+            },
+            error: function (XMLHttpRequest, textStatus) {
+              errorCount++;
+            }
+          });
+        });
+        if(errorCount > 0){
+          layer.msg(lan === 'cn'? '数据保存失败，请稍后再试。' : 'Save failed, please try again later.');
+        }else{
+          location.href = '/order';
+        }
+      },
+      error: function (XMLHttpRequest, textStatus) {
+        alertRequestError('/shoppingCart/resetStatus');
+      }
     });
-    if(errorCount > 0){
-      layer.msg(lan === 'cn'? '数据保存失败，请稍后再试。' : 'Save failed, please try again later.');
-    }else{
-      location.href = '/order';
-    }
   });
 
   initPage();

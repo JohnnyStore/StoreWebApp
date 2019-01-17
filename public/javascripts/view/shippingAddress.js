@@ -69,12 +69,7 @@ $(document).ready(function () {
         });
         $('.order_address .address-detail').click(function () {
           let shippingID = $(this).parent().attr('data-id');
-          let originalBackUrl = localStorage.getItem("itemBackUrl");
-          let preShippingIdIndex = originalBackUrl.indexOf('shippingID');
-          if(preShippingIdIndex > 0){
-            originalBackUrl = originalBackUrl.substr(0, preShippingIdIndex -1);
-          }
-          location.href = originalBackUrl + '&shippingID=' + shippingID;
+          location.href = 'order?' + 'shippingID=' + shippingID;
         });
       },
       error: function(XMLHttpRequest, textStatus){
@@ -84,7 +79,7 @@ $(document).ready(function () {
   }
 
   $('#btn-back').click(function () {
-    location.href = localStorage.getItem("itemBackUrl");
+    location.href = 'order';
   });
 
   $('#btn-add').click(function () {

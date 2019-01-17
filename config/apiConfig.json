@@ -45,6 +45,7 @@
       "itemReviewCondition":"/api/itemReview/condition",
       "shoppingCart":"/api/shoppingCart",
       "shoppingCart4Customer":"/api/shoppingCart/customer",
+      "resetShoppingCartStatus4Customer":"/api/shoppingCart/customer/resetStatus",
       "shoppingCartCondition":"/api/shoppingCart/condition",
       "collection":"/api/collection",
       "collection4Item":"/api/collection/item",
