@@ -1,0 +1,32 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/apply.css' />
+<div class="main">
+  <header>
+    <a href="javascript :;" class="goodslist_arrow" onClick="javascript :history.back(-1);"><i class="iconfont icon-left-arrow"></i></a>
+    <nav class="goods clearfix">
+      <ul>
+        <li>在线支付</li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="container">
+    <div class="applysuccess">
+      <i class="iconfont icon-pass-2-copy"></i>
+      <span>恭喜，订单提交成功！请尽快支付</span>
+      <p>请您在24小时内完成支付，否则订单会被自动取消</p>
+    </div>
+    <div class="applymoney">
+      <p>订单号：{{order.orderID}}</p>
+      <p>应付：<em>{{order.orderAmount}}</em></p>
+    </div>
+    <div class="applytype">
+      <img src="images/weixinPayQRCode.jpeg" style="max-width: 5.5rem; max-height: 5.8rem;" />
+      <p>支付成功后，请务必点击支付完成按钮，以便及时发货。</p>
+      <button type="button" class="btn-ok">支付完成</button>
+    </div>
+  </section>
+</div>
+<input type="hidden" id="hidden-order-id" value="{{order.orderID}}">
+<script type="text/javascript" src="/javascripts/view/apply.js"></script>

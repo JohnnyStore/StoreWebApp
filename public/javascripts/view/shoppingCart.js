@@ -332,6 +332,11 @@ $(function() {
 
   $('#confirm_cart').click(function () {
     let errorCount = 0;
+    let pitchCount = $(".commodity_list_term .pitch_on").length;
+    if(pitchCount === 0){
+      layer.msg(lan === 'cn'? '请选择购物车内的商品。' : 'Please choose item in shopping cart.');
+      return false;
+    }
     $.ajax({
       url: '/shoppingCart/resetStatus',
       type: 'put',

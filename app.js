@@ -20,6 +20,7 @@ let loginRouter = require('./routes/login');
 let registerRouter = require('./routes/register');
 let forgetPasswordRouter = require('./routes/forgetPassword');
 let apply = require('./routes/apply');
+let applySuccess = require('./routes/applySuccess');
 let app = express();
 
 // view engine setup
@@ -49,6 +50,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/forgetPassword', forgetPasswordRouter);
 app.use('/apply', apply);
+app.use('/applySuccess', applySuccess);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

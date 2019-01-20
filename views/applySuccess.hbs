@@ -1,0 +1,47 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/applySuccess.css' />
+<div class="main">
+  <header>
+    <a href="#" class="goodslist_arrow"><i class="iconfont icon-left-arrow"></i></a>
+    <nav class="goods clearfix">
+      <ul>
+        <li>
+          <span class="lan-cn">支付成功</span>
+          <span class="lan-en hidden">Payment Success</span>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="container">
+    <div class="applysuccess apply_sus">
+      <i class="iconfont icon-chenggong1"></i>
+      <p class="lan-cn"> 恭喜你，支付成功！</p>
+      <p class="lan-en hidden"> Payment Success！</p>
+      <p>
+        <span class="lan-cn">实付金额：</span>
+        <span class="lan-en hidden">Total Amount：</span>
+        {{order.orderAmount}}
+      </p>
+      <p>
+        <span class="lan-cn">订单编号：</span>
+        <span class="lan-en hidden">Order#: </span>
+        {{order.orderID}}
+      </p>
+    </div>
+    <div class="apply_button">
+      <a href="/myOrder">
+        <span class="lan-cn">查看订单</span>
+        <span class="lan-en hidden">Order Detail</span>
+      </a>
+      <a href="/">
+        <span class="lan-cn">继续购物</span>
+        <span class="lan-en hidden">To Shopping</span>
+
+      </a>
+    </div>
+
+  </section>
+</div>
+<script type="text/javascript" src="/javascripts/view/applySuccess.js"></script>
