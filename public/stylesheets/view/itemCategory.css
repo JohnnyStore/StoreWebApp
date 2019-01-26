@@ -6,7 +6,18 @@
   /*2018/12/3添加样式*/
   margin-bottom: 1rem;
 }
-
+.goods_list_items .load-more{
+  text-align: center;
+}
+.goods_list_items .loading{
+  text-align: center;
+}
+.goods_list_items .loading span{
+  color: #CCCCCC;
+}
+.load-more .disabled{
+  color: #CCCCCC;
+}
 .goods_list_items li {
   padding: 0.2rem;
   overflow: hidden;

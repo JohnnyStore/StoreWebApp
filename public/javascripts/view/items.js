@@ -1,49 +1,12 @@
 $(document).ready(function () {
-  let n=0;
   let pageNumber = 1;
+  let brandID = $('#hidden-brandID').val();
+  let categoryID = $('#hidden-categoryID').val();
+  let subCategoryID = $('#hidden-subCategoryID').val();
+  let itemDes = $('#hidden-itemDes').val();
   let lan = localStorage.getItem('siteLanguage');
 
-  // let refreshBox=new PullToRefresh({
-  //   container:"#app",
-  //   pull:{
-  //     callback:function(){
-  //       // setTimeout(function(){
-  //       //   n=0;
-  //       //   addhtml("html");
-  //       //   refreshBox.endPullRefresh(true)
-  //       // },1000)
-  //     }
-  //   },
-  //   up:{
-  //     //上滑
-  //     callback:function(){
-  //       let brandID = $('#hidden-brandID').val();
-  //       let categoryID = $('#hidden-categoryID').val();
-  //       let subCategoryID = $('#hidden-subCategoryID').val();
-  //       let itemDes = $('#hidden-itemDes').val();
-  //
-  //       //getItemList(brandID, categoryID, subCategoryID, itemDes, pageNumber++);
-  //
-  //       // setTimeout(function(){
-  //       //   if(n<5){
-  //       //     n++;
-  //       //     addhtml("append");
-  //       //     refreshBox.endUpLoading(true)
-  //       //   }else{
-  //       //     //没有数据
-  //       //     //refreshBox.endUpLoading(false)
-  //       //   }
-  //       // },1000)
-  //     }
-  //   }
-  // });
-
   function initPage() {
-    let brandID = $('#hidden-brandID').val();
-    let categoryID = $('#hidden-categoryID').val();
-    let subCategoryID = $('#hidden-subCategoryID').val();
-    let itemDes = $('#hidden-itemDes').val();
-
     getItemList(brandID, categoryID, subCategoryID, itemDes, pageNumber);
   }
 
@@ -53,6 +16,15 @@ $(document).ready(function () {
   }
 
   function getItemList(brandID, categoryID, subCategoryID, itemDes, pageNumber) {
+    if($('.goods_list_items ul li').length === 0){
+      $('.goods_list_items ul').append(
+          '<li class="loading">\n' +
+          '  <a href="javascript:;">\n' +
+          '    <span class="lan-cn">加载中...</span>\n' +
+          '    <span class="lan-en hidden">loading...</span>\n' +
+          '  </a>\n' +
+          '</li>');
+    }
     $.ajax({
       url: '/items/list?brandID=' + brandID + '&categoryID=' + categoryID + '&subCategoryID=' + subCategoryID + '&itemDes=' + itemDes + '&pageNumber=' + pageNumber,
       type: 'GET',
@@ -60,7 +32,9 @@ $(document).ready(function () {
         if(res.err){
           alertResponseError(res.code, res.msg);
         }else{
-          if(res.itemList.length === 0){
+          if(res.itemList === null){
+            $('.goods_list_items ul li.loading').remove();
+            $('.load-more a').addClass('disabled');
             let msg = lan === 'cn'? '没有查询到满足条件的商品。' : 'There is no item.';
             layer.msg(msg);
             return false;
@@ -97,7 +71,6 @@ $(document).ready(function () {
                     '  </a>\n' +
                     '</li>';
               }
-
             }else{
               if(item.hasDiscount){
                 currentItemHtml =
@@ -128,10 +101,35 @@ $(document).ready(function () {
                     '  </a>\n' +
                     '</li>';
               }
-
             }
             $('.goods_list_items ul').append(currentItemHtml);
           });
+
+          $('.goods_list_items ul li.loading').remove();
+
+          $('.goods_list_items ul li.load-more').remove();
+
+          $('.goods_list_items ul').append(
+              '<li class="load-more">\n' +
+              '  <a href="javascript:;">\n' +
+              '    <span class="lan-cn">加载更多</span>\n' +
+              '    <span class="lan-en hidden">load more</span>\n' +
+              '  </a>\n' +
+              '</li>');
+
+          $('.goods_list_items ul li.load-more a').on('click', function() {
+            if($(this).hasClass('disabled')){
+              return false;
+            }
+            $(this).addClass('disabled');
+            $(this).find('span.lan-cn').text('加载中...' );
+            $(this).find('span.lan-en').text('loading...');
+            getItemList(brandID, categoryID, subCategoryID, itemDes, ++pageNumber);
+          });
+
+          $('.load-more a').removeClass('disabled');
+          $('.load-more a').find('span.lan-cn').text('加载更多' );
+          $('.load-more a').find('span.lan-en').text('load more');
         }
       },
       error: function(XMLHttpRequest, textStatus){
