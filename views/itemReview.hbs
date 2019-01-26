@@ -1,0 +1,43 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/itemReview.css' />
+<div class="main">
+  <div class="title">
+    <h2 class="lan-cn">请填写您对该商品的评价</h2>
+    <h2 class="lan-en hidden">Please write the review content</h2>
+  </div>
+  <div class="review">
+    <form>
+      <div class="review-star">
+        <i class="fa fa-star star-red" data-score="1"></i>
+        <i class="fa fa-star star-red" data-score="2"></i>
+        <i class="fa fa-star star-red" data-score="3"></i>
+        <i class="fa fa-star star-red" data-score="4"></i>
+        <i class="fa fa-star star-red" data-score="5"></i>
+        <span class="star-num">5</span>
+        <span class="lan-cn star-num-unit">分</span>
+        <span class="lan-en star-num-unit hidden">Score</span>
+      </div>
+      <div class="review-level">
+        <i class="fa fa-dot-circle-o review-level-selected" data-level="G"></i>
+        <span class="lan-cn review-level-text">好评</span>
+        <span class="lan-en hidden review-level-text">Good</span>
+        <i class="fa fa-circle-o" data-level="N"></i>
+        <span class="lan-cn review-level-text">中评</span>
+        <span class="lan-en hidden review-level-text">Middle</span>
+        <i class="fa fa-circle-o" data-level="B"></i>
+        <span class="lan-cn review-level-text">差评</span>
+        <span class="lan-en hidden review-level-text">Bad</span>
+      </div>
+      <div class="review-content">
+        <textarea class="review-text" rows="5" maxlength="100" placeholder="请填写您对商品的评价"></textarea>
+      </div>
+      <a href="javascript:;" class="btn btn-review-submit">
+        <span class="lan-cn">提价评论</span>
+        <span class="lan-en hidden">Submit</span>
+      </a>
+    </form>
+  </div>
+</div>
+<input type="hidden" value="{{itemID}}" id="hidden-itemID">
+<script type="text/javascript" src="/javascripts/view/itemReview.js"></script>

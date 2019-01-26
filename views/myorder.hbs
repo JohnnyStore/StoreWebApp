@@ -1,0 +1,193 @@
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/myorder.css' />
+
+<div class="main">
+  <div class="find_nav">
+    <div class="find_nav_left">
+      <div class="find_nav_list" id="pagenavi1">
+        <ul>
+          <li>
+            <a href="/myOrder?orderStatus=N" class="active">
+              <span class="lan-cn">全部订单</span>
+              <span class="lan-en hidden">All Order</span>
+              {{totalCount}}
+            </a>
+          </li>
+          <li>
+            <a href="/myOrder?orderStatus=O">
+              <span class="lan-cn">待付款</span>
+              <span class="lan-en hidden">Payment</span>
+              {{toPayOrderCount}}
+            </a>
+          </li>
+          <li>
+            <a href="/myOrder?orderStatus=S">
+              <span class="lan-cn">待收货</span>
+              <span class="lan-en hidden">Receive</span>
+              {{toReceiveOrderCount}}
+            </a>
+          </li>
+          <li>
+            <a href="/myOrder?orderStatus=F">
+              <span class="lan-cn">待评价</span>
+              <span class="lan-en hidden">Review</span>
+              {{toReviewOrderCount}}
+            </a>
+          </li>
+          <li class="sideline"></li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+  <div id="slider1" class="swipe">
+    <ul class="box01_list">
+      <li>
+        <div class="main" style="position: static !important;">
+          {{#if orderList}}
+            {{# each orderList}}
+              <div class="commodity_box clearfix">
+                <div class="commodity_list">
+                  <div class="tite_tim select">
+                    <span class="lan-cn">订单号 {{this.orderID}}</span>
+                    <span class="lan-en hidden">Order# {{this.orderID}}</span>
+                    <div class="order-type">
+                      <span class="lan-cn">{{this.orderStatusText}}</span>
+                      <span class="lan-en hidden">{{this.orderStatusTextEn}}</span>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  <!--商品-->
+                  <ul class="commodity_list_term clearfix">
+                    {{# each this.orderTransactionList}}
+                      <li class="select">
+                        <img src="{{this.itemVO.itemImageUrl}}" />
+                        <div class="div_center">
+                          <h4 class="lan-cn">{{this.itemVO.brandCN}} {{this.itemVO.itemShortDescriptionCN}}</h4>
+                          <h4 class="lan-en hidden">{{this.itemVO.brandEN}} {{this.itemVO.itemShortDescriptionEN}}</h4>
+                          <p class="lan-cn now_type">
+                            {{this.itemVO.colorCN}} {{this.itemVO.sizeCN}}
+                            <span class="now_value"><i>￥</i><b class="qu_su">{{this.itemVO.salesPrice4RMB}}</b></span>
+                          </p>
+                          <p class="lan-en hidden now_type">
+                            {{this.itemVO.colorEN}} {{this.itemVO.sizeEN}}
+                            <span class="now_value"><i>¥</i><b class="qu_su">{{this.itemVO.salesPrice4USD}}</b></span>
+                          </p>
+
+                        </div>
+                        <div class="div_right">
+                          X{{this.itemCount}}
+                          {{# if ../this.isRefunded}}
+                            {{# if this.customerReviewed}}
+                              <span class="lan-cn">已评价</span>
+                              <span class="lan-en hidden">Reviewed</span>
+                            {{else}}
+                              <a href="javascript:;" class="order-review" data-order-id="{{../this.orderID}}" data-item-id="{{this.itemVO.itemID}}">评价</a>
+                            {{/if}}
+                          {{/if}}
+                          {{# if ../this.isCompleted}}
+                            {{# if this.customerReviewed}}
+                              <span class="lan-cn reviewed">已评价</span>
+                              <span class="lan-en reviewed hidden">Reviewed</span>
+                            {{else}}
+                              <a href="javascript:;" class="order-review" data-order-id="{{../this.orderID}}" data-item-id="{{this.itemVO.itemID}}">评价</a>
+                            {{/if}}
+                          {{/if}}
+                        </div>
+                      </li>
+                    {{/each}}
+                  </ul>
+                  <!--优惠信息-->
+                  <div class="shop_ul_bottom order_bottom clearfix">
+                    <p>
+                      <span class="lan-cn">合计：</span>
+                      <span class="lan-en hidden">Total:</span>
+                      <em>{{this.currencySymbol}}{{this.orderAmount}}</em>
+                    </p>
+
+                    {{# if this.isWaitPay}}
+                      <a href="/apply?orderNumber={{this.orderID}}" class="order-payment">去支付</a>
+                      <a href="javascript:;" class="order-cancel" data-order-id="{{this.orderID}}">取消订单</a>
+                    {{/if}}
+                    {{# if this.isShipping}}
+                      <a href="javascript:;" class="order-receive" data-order-id="{{this.orderID}}">确认收货</a>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+
+            <div class="commodity_box clearfix load-more">
+              <div class="commodity_list">
+                <div class="tite_tim select">
+                  <a href="javascript:;" class="previous">
+                    <span class="lan-cn">上一页</span>
+                    <span class="lan-en hidden">Previous</span>
+                  </a>
+                  <a href="javascript:;" class="next">
+                    <span class="lan-cn">下一页</span>
+                    <span class="lan-en hidden">Next</span>
+                  </a>
+
+                  <div class="clear"></div>
+                </div>
+              </div>
+            </div>
+          {{else}}
+            <div class="commodity_box clearfix">
+              <div class="commodity_list">
+                <h3 class="lan-cn no-data">你还没有相关的订单</h3>
+                <h3 class="lan-en hidden no-data">There is no relate orders</h3>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <ul>
+      <li>
+        <a href="/">
+          <i class="iconfont icon-shouye1"></i>
+          <p class="lan-cn">首页</p>
+          <p class="lan-en">Index</p>
+        </a>
+      </li>
+      <li>
+        <a href="/itemCategory">
+          <i class="iconfont icon-fenlei"></i>
+          <p class="lan-cn">分类</p>
+          <p class="lan-en">Category</p>
+        </a>
+      </li>
+      <li>
+        <a href="/shoppingCart">
+          <i class="iconfont icon-gouwuche3"></i>
+          <p class="lan-cn">购物车</p>
+          <p class="lan-en">Shopping Cart</p>
+        </a>
+      </li>
+      <li>
+        <a href="/myOrder">
+          <i class="iconfont icon-wode"></i>
+          <p class="lan-cn">我的</p>
+          <p class="lan-en">Mine</p>
+        </a>
+      </li>
+    </ul>
+  </footer>
+</div>
+
+<input type="hidden" id="hidden-totalCount" value="{{totalCount}}">
+<input type="hidden" id="hidden-pageSize" value="{{pageSize}}">
+<input type="hidden" id="hidden-toPayOrderCount" value="{{toPayOrderCount}}">
+<input type="hidden" id="hidden-toReceiveOrderCount" value="{{toReceiveOrderCount}}">
+<input type="hidden" id="hidden-toReviewOrderCount" value="{{toReviewOrderCount}}">
+<input type="hidden" id="hidden-error" value="{{error}}">
+<input type="hidden" id="hidden-orderStatus" value="{{orderStatus}}">
+<input type="hidden" id="hidden-pageNumber" value="{{pageNumber}}">
+<script type="text/javascript" src="/javascripts/view/myorder.js"></script>
+<script type="text/javascript" src="/javascripts/touchslider.js"></script>
