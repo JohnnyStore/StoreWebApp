@@ -1,3 +1,50 @@
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>
+<link rel='stylesheet' href='/stylesheets/view/basic.css' />
+<link rel='stylesheet' href='/stylesheets/iconfont.css' />
+<link rel='stylesheet' href='/stylesheets/view/error.css' />
+<link rel='stylesheet' href='/stylesheets/view/index.css' />
+
+
+<div class="main">
+  <div class="error-img">
+    <img src="images/error.jpeg" alt="">
+  </div>
+  <div class="error-content">
+    <h1>{{errorMsg}}</h1>
+  </div>
+
+  <footer>
+    <ul>
+      <li>
+        <a href="/">
+          <i class="iconfont icon-shouye1"></i>
+          <p class="lan-cn">首页</p>
+          <p class="lan-en">Index</p>
+        </a>
+      </li>
+      <li>
+        <a href="/itemCategory">
+          <i class="iconfont icon-fenlei"></i>
+          <p class="lan-cn">分类</p>
+          <p class="lan-en">Category</p>
+        </a>
+      </li>
+      <li>
+        <a href="/shoppingCart">
+          <i class="iconfont icon-gouwuche3"></i>
+          <p class="lan-cn">购物车</p>
+          <p class="lan-en">Shopping Cart</p>
+        </a>
+      </li>
+      <li>
+        <a href="/myOrder">
+          <i class="iconfont icon-wode"></i>
+          <p class="lan-cn">我的</p>
+          <p class="lan-en">Mine</p>
+        </a>
+      </li>
+    </ul>
+  </footer>
+</div>
+
+
+<script type="text/javascript" src="/javascripts/view/error.js"></script>

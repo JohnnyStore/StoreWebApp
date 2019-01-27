@@ -9,7 +9,12 @@ $(document).ready(function () {
   let pageSize = parseInt($('#hidden-pageSize').val());
 
   function initPage(){
+    let login = $('#hidden-login').val();
     let error = $('#hidden-error').val();
+    if(login === 'true'){
+      location.href = '/login?targetUrl=/myOrder';
+      return false;
+    }
     if(error === 'true'){
       layer.msg(lan === 'cn'? '系统异常，请稍后再试。' : 'System error, please try again later.');
       return false;
