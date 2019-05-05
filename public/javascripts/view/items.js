@@ -32,10 +32,13 @@ $(document).ready(function () {
         if(res.err){
           alertResponseError(res.code, res.msg);
         }else{
-          if(res.itemList === null){
+          if(res.itemList === null || res.itemList.length === 0){
             $('.goods_list_items ul li.loading').remove();
             $('.load-more a').addClass('disabled');
-            let msg = lan === 'cn'? '没有查询到满足条件的商品。' : 'There is no item.';
+            let msg = lan === 'cn'? '没有找到更多满足条件的商品。' : 'There is no item.';
+            $('.load-more a').removeClass('disabled');
+            $('.load-more a').find('span.lan-cn').text('加载更多' );
+            $('.load-more a').find('span.lan-en').text('load more');
             layer.msg(msg);
             return false;
           }

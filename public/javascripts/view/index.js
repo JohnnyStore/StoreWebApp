@@ -10,6 +10,9 @@ $(document).ready(function () {
     loadCatPromotionItem();
   }
 
+  /**
+   * 每日抢购
+   */
   function loadDailySale() {
     $.ajax({
       url: '/index/dailySale',
@@ -23,51 +26,143 @@ $(document).ready(function () {
           let dailySaleParentHtml = '<div class="swiper-slide">\n  <ul>\n{%}</ul>\n</div>\n';
           let dailySaleItemHtml = '';
           let currentDailySaleHtml = '';
-          $.each(res.dailySale, function(index, item){
-            if(lan === 'cn'){
-              currentDailySaleHtml =
-                  '  <li>\n' +
-                  '    <a href="item?itemID=' + item.itemID + '">\n' +
-                  '      <div class="Goodsimg">\n' +
-                  '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
-                  '      </div>\n' +
-                  '      <p class="lan-cn">' + item.itemShortDescriptionCN + '</p>\n' +
-                  '      <div class="price">\n' +
-                  '        <span class="lan-cn">￥' + item.snapUpPrice4RMB + '</span>\n' +
-                  '        <span class="lan-cn original">￥' + item.unitPrice4RMB + '</span>\n' +
-                  '      </div>\n' +
-                  '    </a>\n' +
-                  '  </li>\n';
-            }else{
-              currentDailySaleHtml =
-                  '  <li>\n' +
-                  '    <a href="item?itemID=' + item.itemID + '">\n' +
-                  '      <div class="Goodsimg">\n' +
-                  '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
-                  '      </div>\n' +
-                  '      <p class="lan-en">' + item.itemShortDescriptionEN + '</p>\n' +
-                  '      <div class="price">\n' +
-                  '        <span class="lan-en">$' + item.snapUpPrice4USD + '</span>\n' +
-                  '        <span class="lan-en original">$' + item.unitPrice4USD + '</span>\n' +
-                  '      </div>\n' +
-                  '    </a>\n' +
-                  '  </li>\n';
-            }
 
-            if(index === res.dailySale.length - 1){
-              dailySaleItemHtml += currentDailySaleHtml;
-              dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
-              return false;
-            }
-            if(index % 3 === 0){
-              if(dailySaleItemHtml.length > 0){
-                dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
+          if(res.dailySale.length <= 3){
+            //只有一组
+            $.each(res.dailySale, function(index, item){
+              if(lan === 'cn'){
+                currentDailySaleHtml =
+                    '  <li>\n' +
+                    '    <a href="item?itemID=' + item.itemID + '">\n' +
+                    '      <div class="Goodsimg">\n' +
+                    '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
+                    '      </div>\n' +
+                    '      <p class="lan-cn">' + item.itemShortDescriptionCN + '</p>\n' +
+                    '      <div class="price">\n' +
+                    '        <span class="lan-cn">￥' + item.snapUpPrice4RMB + '</span>\n' +
+                    '        <span class="lan-cn original">￥' + item.unitPrice4RMB + '</span>\n' +
+                    '      </div>\n' +
+                    '    </a>\n' +
+                    '  </li>\n';
+              }else{
+                currentDailySaleHtml =
+                    '  <li>\n' +
+                    '    <a href="item?itemID=' + item.itemID + '">\n' +
+                    '      <div class="Goodsimg">\n' +
+                    '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
+                    '      </div>\n' +
+                    '      <p class="lan-en">' + item.itemShortDescriptionEN + '</p>\n' +
+                    '      <div class="price">\n' +
+                    '        <span class="lan-en">$' + item.snapUpPrice4USD + '</span>\n' +
+                    '        <span class="lan-en original">$' + item.unitPrice4USD + '</span>\n' +
+                    '      </div>\n' +
+                    '    </a>\n' +
+                    '  </li>\n';
               }
-              dailySaleItemHtml = currentDailySaleHtml;
-            }else{
+              //拼装一组商品（至少三个一组）
               dailySaleItemHtml += currentDailySaleHtml;
-            }
-          });
+            });
+            //形成动态完整的HTML
+            dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
+          }else{
+            //一组以上
+            let count = 0;
+            let totalCount = res.dailySale.length;
+            $.each(res.dailySale, function(index, item){
+              count++;
+              if(lan === 'cn'){
+                currentDailySaleHtml =
+                    '  <li>\n' +
+                    '    <a href="item?itemID=' + item.itemID + '">\n' +
+                    '      <div class="Goodsimg">\n' +
+                    '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
+                    '      </div>\n' +
+                    '      <p class="lan-cn">' + item.itemShortDescriptionCN + '</p>\n' +
+                    '      <div class="price">\n' +
+                    '        <span class="lan-cn">￥' + item.snapUpPrice4RMB + '</span>\n' +
+                    '        <span class="lan-cn original">￥' + item.unitPrice4RMB + '</span>\n' +
+                    '      </div>\n' +
+                    '    </a>\n' +
+                    '  </li>\n';
+              }else{
+                currentDailySaleHtml =
+                    '  <li>\n' +
+                    '    <a href="item?itemID=' + item.itemID + '">\n' +
+                    '      <div class="Goodsimg">\n' +
+                    '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
+                    '      </div>\n' +
+                    '      <p class="lan-en">' + item.itemShortDescriptionEN + '</p>\n' +
+                    '      <div class="price">\n' +
+                    '        <span class="lan-en">$' + item.snapUpPrice4USD + '</span>\n' +
+                    '        <span class="lan-en original">$' + item.unitPrice4USD + '</span>\n' +
+                    '      </div>\n' +
+                    '    </a>\n' +
+                    '  </li>\n';
+              }
+
+              //拼装一组商品（至少三个一组）
+              dailySaleItemHtml += currentDailySaleHtml;
+
+              if(index === totalCount - 1){
+                //形成动态完整的HTML
+                dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
+                dailySaleItemHtml = '';
+                return false;
+              }
+              if(count % 3 === 0){
+                //形成动态完整的HTML
+                dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
+                dailySaleItemHtml = '';
+              }
+            });
+          }
+
+          // $.each(res.dailySale, function(index, item){
+          //   if(lan === 'cn'){
+          //     currentDailySaleHtml =
+          //         '  <li>\n' +
+          //         '    <a href="item?itemID=' + item.itemID + '">\n' +
+          //         '      <div class="Goodsimg">\n' +
+          //         '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
+          //         '      </div>\n' +
+          //         '      <p class="lan-cn">' + item.itemShortDescriptionCN + '</p>\n' +
+          //         '      <div class="price">\n' +
+          //         '        <span class="lan-cn">￥' + item.snapUpPrice4RMB + '</span>\n' +
+          //         '        <span class="lan-cn original">￥' + item.unitPrice4RMB + '</span>\n' +
+          //         '      </div>\n' +
+          //         '    </a>\n' +
+          //         '  </li>\n';
+          //   }else{
+          //     currentDailySaleHtml =
+          //         '  <li>\n' +
+          //         '    <a href="item?itemID=' + item.itemID + '">\n' +
+          //         '      <div class="Goodsimg">\n' +
+          //         '        <img src="' + item.itemImageUrl + '" alt="" width="100%" height="100%" />\n' +
+          //         '      </div>\n' +
+          //         '      <p class="lan-en">' + item.itemShortDescriptionEN + '</p>\n' +
+          //         '      <div class="price">\n' +
+          //         '        <span class="lan-en">$' + item.snapUpPrice4USD + '</span>\n' +
+          //         '        <span class="lan-en original">$' + item.unitPrice4USD + '</span>\n' +
+          //         '      </div>\n' +
+          //         '    </a>\n' +
+          //         '  </li>\n';
+          //   }
+          //
+          //   //0，1，2   3，4，5   6，7，8
+          //   if(index === res.dailySale.length - 1){
+          //     dailySaleItemHtml += currentDailySaleHtml;
+          //     dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
+          //     return false;
+          //   }
+          //   if(index % 3 === 0){
+          //     if(dailySaleItemHtml.length > 0){
+          //       dailySaleHtml += dailySaleParentHtml.replace('{%}', dailySaleItemHtml);
+          //     }
+          //     dailySaleItemHtml = currentDailySaleHtml;
+          //   }else{
+          //     dailySaleItemHtml += currentDailySaleHtml;
+          //   }
+          // });
 
           $('.daily-sale').append(dailySaleHtml);
 
@@ -95,6 +190,9 @@ $(document).ready(function () {
     });
   }
 
+  /**
+   * 推荐品牌
+   */
   function loadHotBrands() {
     $.ajax({
       url: '/index/hotBrands',
@@ -127,6 +225,9 @@ $(document).ready(function () {
     });
   }
 
+  /**
+   * 当季热销
+   */
   function loadHotItem() {
     $.ajax({
       url: '/index/hotItem',
@@ -209,6 +310,9 @@ $(document).ready(function () {
     });
   }
 
+  /**
+   * 狗类促销商品
+   */
   function loadDogPromotionItem() {
     $.ajax({
       url: '/index/itemPromotion?category=1',
@@ -218,7 +322,12 @@ $(document).ready(function () {
           alertResponseError(res.code, res.msg);
         }else{
           let currentPromotionSaleHtml = '';
+          let count = 0;
           $.each(res.data, function(index, item){
+            count++;
+            if(count > 6){
+              return false;
+            }
             if(lan === 'cn'){
               currentPromotionSaleHtml =
                   '<li>\n' +
@@ -254,6 +363,9 @@ $(document).ready(function () {
     });
   }
 
+  /**
+   * 猫类促销商品
+   */
   function loadCatPromotionItem() {
     $.ajax({
       url: '/index/itemPromotion?category=2',
@@ -263,7 +375,12 @@ $(document).ready(function () {
           alertResponseError(res.code, res.msg);
         }else{
           let currentPromotionSaleHtml = '';
+          let count = 0;
           $.each(res.data, function(index, item){
+            count++;
+            if(count > 6){
+              return false;
+            }
             if(lan === 'cn'){
               currentPromotionSaleHtml =
                   '<li>\n' +
