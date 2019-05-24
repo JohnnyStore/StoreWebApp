@@ -203,17 +203,17 @@ $(document).ready(function () {
         }else{
           $.each(res.brandList, function(index, brand){
             if(brand.brandID === 1){
-              $('.brandlist ul').append('<li><a href="/itemList?brandID=' + brand.brandID + '"><img src="' + brand.imageSrc + '" width="100%" height="100%" alt="" /></a></li>');
+              $('.brandlist ul').append('<li><a href="/items?brandID=' + brand.brandID + '"><img src="' + brand.imageSrc + '" width="100%" height="100%" alt="" /></a></li>');
             }
           });
           $.each(res.brandList, function(index, brand){
             if(brand.brandID === 3){
-              $('.brandlist ul').append('<li><a href="/itemList?brandID=' + brand.brandID + '"><img src="' + brand.imageSrc + '" width="100%" height="100%" alt="" /></a></li>');
+              $('.brandlist ul').append('<li><a href="/items?brandID=' + brand.brandID + '"><img src="' + brand.imageSrc + '" width="100%" height="100%" alt="" /></a></li>');
             }
           });
           $.each(res.brandList, function(index, brand){
             if(brand.brandID === 2){
-              $('.brandlist ul').append('<li><a href="/itemList?brandID=' + brand.brandID + '"><img src="' + brand.imageSrc + '" width="100%" height="100%" alt="" /></a></li>');
+              $('.brandlist ul').append('<li><a href="/items?brandID=' + brand.brandID + '"><img src="' + brand.imageSrc + '" width="100%" height="100%" alt="" /></a></li>');
             }
           });
 
